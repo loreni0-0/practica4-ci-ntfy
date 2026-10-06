@@ -1,0 +1,23 @@
+name: Notificacion Push a Main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar script Hola Mundo
+        run: node index.js
+
+      - name: Enviar notificacion a ntfy.sh
+        run: |
+          curl -H "Title: Pipeline CI Exitoso" \
+               -H "Tags: white_check_mark,rocket" \
+               -d "Nuevo commit subido a la rama main por ${{ github.actor }}. Proyecto: ${{ github.repository }}" \
+               https://ntfy.sh/devops-itla
