@@ -1,4 +1,4 @@
-name: Notificacion Push a Main
+name: Notificacion CI a ntfy
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
 
       - name: Enviar notificacion a ntfy.sh
         run: |
-          curl -H "Title: Pipeline CI Exitoso" \
+          curl -H "Title: Hola Mundo en JavaScript" \
                -H "Tags: white_check_mark,rocket" \
-               -d "Nuevo commit subido a la rama main por ${{ github.actor }}. Proyecto: ${{ github.repository }}" \
+               -d "Integración continua ejecutada correctamente en la rama main. Subido por: ${{ github.actor }}" \
                https://ntfy.sh/devops-itla
